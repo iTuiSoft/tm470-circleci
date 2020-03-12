@@ -1,4 +1,4 @@
-package models;
+package com.hopkins.example.models;
 
 import lombok.Builder;
 import lombok.Getter;
