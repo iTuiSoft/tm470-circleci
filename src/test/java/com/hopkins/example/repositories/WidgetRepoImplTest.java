@@ -2,8 +2,8 @@ package com.hopkins.example.repositories;
 
 import com.hopkins.example.models.Widget;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,8 +17,8 @@ class WidgetRepoImplTest {
         widgetRepo = new WidgetRepoImpl();
     }
 
-    @AfterEach
-    void tearDown() {
+    @BeforeEach
+    void clear(){
         widgetRepo.clear();
     }
 
