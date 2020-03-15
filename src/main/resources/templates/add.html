@@ -1,11 +1,11 @@
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta content="" name="description">
+    <meta content="" name="author">
+    <link href="../../favicon.ico" rel="icon"/>
     <title>Widgets R Us</title>
     <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
 </head>
@@ -15,17 +15,18 @@
 
 <div class="col-md-6 col-md-offset-3">
     <!--/*@thymesVar id="widget" type="com.hopkins.example.models.Widget"*/-->
-    <form th:object="${widget}" th:action="@{/widget/}" method="post">
+    <form method="post" th:action="@{/widget/}" th:object="${widget}">
         <label>Name</label>
-        <input type="text" class="form-control" th:field="*{name}"/>
+        <input class="form-control" th:field="*{name}" type="text"/>
         <label>Purpose</label>
         <textarea class="form-control" rows="3" th:field="*{purpose}"></textarea>
         <label>Size</label>
-        <input type="number" class="form-control" th:field="*{size}"/>
+        <input class="form-control" th:field="*{size}" type="number"/>
         <label>ID</label>
-        <input type="number" class="form-control" th:field="*{id}"/>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <input class="form-control" th:field="*{id}" type="number"/>
+        <button class="btn btn-primary" type="submit">Submit</button>
     </form>
+    <a href="/">Home</a>
 </div>
 </body>
 </html>
