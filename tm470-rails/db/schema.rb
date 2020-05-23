@@ -12,11 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2020_05_22_145441) do
 
-  create_table "widgets", id: false, force: :cascade do |t|
+  create_table "widgets", force: :cascade do |t|
     t.string "name"
     t.text "purpose"
     t.integer "size"
-    t.integer "id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
