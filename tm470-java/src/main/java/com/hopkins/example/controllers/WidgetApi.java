@@ -31,6 +31,11 @@ public class WidgetApi {
         }
     }
 
+    @GetMapping("/widgets/")
+    public ResponseEntity<Object> getAllWidgets() {
+        return ResponseEntity.ok(widgetRepo.all());
+    }
+
     @PostMapping("/widget/add")
     public ResponseEntity<String> addWidget(@RequestBody Widget newWidget){
         if (widgetRepo.add(newWidget)) {

@@ -43,6 +43,11 @@ public class WidgetRepoImpl implements WidgetRepo {
     }
 
     @Override
+    public List<Widget> all() {
+        return widgetList;
+    }
+
+    @Override
     public int count() {
         return widgetList.size();
     }

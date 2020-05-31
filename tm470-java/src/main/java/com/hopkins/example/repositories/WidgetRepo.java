@@ -1,5 +1,9 @@
 package com.hopkins.example.repositories;
 
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+
 import com.hopkins.example.models.Widget;
 
 public interface WidgetRepo {
@@ -14,4 +18,5 @@ public interface WidgetRepo {
 
     void clear();
 
+    List<Widget> all();
 }
