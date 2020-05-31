@@ -47,13 +47,12 @@ class WidgetRepoImplTest {
             .name("TestWidget2")
             .purpose("Testing finding in the repo")
             .size(20)
-            .id(2)
             .build();
 
-        widgetRepo.add(testWidget);
+        int testId = widgetRepo.add(testWidget);
 
         //When
-        Widget foundWidget = widgetRepo.find(2);
+        Widget foundWidget = widgetRepo.find(testId);
 
         //Then
         assertEquals(testWidget, foundWidget);
@@ -67,14 +66,12 @@ class WidgetRepoImplTest {
             .name("TestWidget1")
             .purpose("Testing deleting from the repo")
             .size(20)
-            .id(1)
             .build();
 
         Widget testWidget2 = Widget.builder()
             .name("TestWidget2")
             .purpose("Testing deleting from the repo")
             .size(20)
-            .id(2)
             .build();
 
         widgetRepo.add(testWidget);

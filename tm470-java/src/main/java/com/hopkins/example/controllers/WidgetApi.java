@@ -12,7 +12,7 @@ import com.hopkins.example.models.Widget;
 import com.hopkins.example.repositories.WidgetRepo;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping(value = "/api")
 public class WidgetApi {
 
     private final WidgetRepo widgetRepo;
@@ -37,12 +37,9 @@ public class WidgetApi {
     }
 
     @PostMapping("/widget/add")
-    public ResponseEntity<String> addWidget(@RequestBody Widget newWidget){
-        if (widgetRepo.add(newWidget)) {
-            return ResponseEntity.ok().build();
-        } else {
-            return ResponseEntity.noContent().build();
-        }
+    public ResponseEntity<Object> addWidget(@RequestBody Widget newWidget){
+        int newId = widgetRepo.add(newWidget);
+        return ResponseEntity.ok(newId);
 
     }
 }

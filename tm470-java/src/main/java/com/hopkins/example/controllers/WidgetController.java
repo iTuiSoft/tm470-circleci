@@ -22,14 +22,12 @@ public class WidgetController {
             .name("Widget1")
             .purpose("Bootstrapping the database")
             .size(4)
-            .id(1)
             .build();
 
         Widget widget2 = Widget.builder()
             .name("Widget2")
             .purpose("Bootstrapping the database more")
             .size(2)
-            .id(2)
             .build();
 
         widgetRepo.add(widget1);
@@ -61,9 +59,9 @@ public class WidgetController {
 
     @PostMapping("/widget")
     public String saveWidget(@ModelAttribute Widget widget) {
-        widgetRepo.add(widget);
+        int newId = widgetRepo.add(widget);
 
-        return "redirect:/widget/" + widget.getId();
+        return "redirect:/widget/" + newId;
     }
 
 

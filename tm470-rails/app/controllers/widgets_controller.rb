@@ -4,21 +4,23 @@ class WidgetsController < ApplicationController
   end
 
   def show
-    @widget = Widget.find(params[:id])
+    id = params[:id]
+    @widget = Widget.find(id)
   end
 
   def new
-    @widget = Widget.new
+
   end
 
   def create
-    @widget = Widget.new(widget_params)
+    widget_id = Widget.create(
+        name: widget_params[:name],
+        purpose: widget_params[:purpose],
+        size: widget_params[:size]
+    )
 
-    if @widget.save
-      redirect_to @widget
-    else
-      render 'new'
-    end
+    redirect_to widget_path(widget_id)
+
   end
 
   private
