@@ -1,12 +1,12 @@
 class Widget < Flexirest::Base
   request_body_type :json
 
-  base_url = "http://localhost:8080/api"
+  base_url = Rails.application.config.widget_service_config[:host]
 
-  get :all, base_url + "/widgets/"
+  get :all, base_url + "api/widgets/"
 
-  get :find, base_url + "/widget/:id/"
+  get :find, base_url + "api/widget/:id/"
 
-  post :create, base_url + "/widget/add/", plain: true
+  post :create, base_url + "api/widget/add/", plain: true
 
 end
