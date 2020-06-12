@@ -3,10 +3,10 @@ class Widget < Flexirest::Base
 
   base_url = Rails.application.config.widget_service_config[:host]
 
-  get :all, base_url + "api/widgets/"
+  get :all, base_url + "external/widgets/"
 
-  get :find, base_url + "api/widget/:id/"
+  get :find, base_url + "external/widget/:id/"
 
-  post :create, base_url + "api/widget/add/", plain: true
+  post :create, base_url + "external/widget/add/", plain: true
 
 end

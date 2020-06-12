@@ -1,6 +1,7 @@
 package com.hopkins.example.controllers;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hopkins.example.models.Widget;
 import com.hopkins.example.repositories.WidgetRepo;
 
-@RestController
-@RequestMapping(value = "/api")
+@Controller
+@RequestMapping(value = "/external")
 public class WidgetApi {
 
     private final WidgetRepo widgetRepo;
