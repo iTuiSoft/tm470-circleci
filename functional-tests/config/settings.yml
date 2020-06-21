@@ -1,0 +1,4 @@
+base_url:
+  ruby: <%= ENV['RUBY_URL'] || 'http://localhost:3000/' %>
+  java: <%= ENV['JAVA_URL'] || 'http://localhost:8080/' %>
+
