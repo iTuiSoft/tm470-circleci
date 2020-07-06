@@ -14,11 +14,6 @@
     <name>example</name>
     <description>Java web app for pipeline testing</description>
 
-    <properties>
-        <java.version>1.8</java.version>
-        <vaadin.version>14.1.17</vaadin.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -57,6 +52,11 @@
                     <artifactId>junit-vintage-engine</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>de.flapdoodle.embed</groupId>
+            <artifactId>de.flapdoodle.embed.mongo</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
