@@ -1,6 +1,6 @@
-package repositories;
+package com.hopkins.example.repositories;
 
-import models.Widget;
+import com.hopkins.example.models.Widget;
 
 public interface WidgetRepo {
 
