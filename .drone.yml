@@ -10,9 +10,9 @@ steps:
 
   - name: docker
     image: plugins/docker
-      settings:
-        repo: chrishopkins53/tm470-drone
-        username:
-          from_secret: docker_username
-        password:
-          from_secret: docker_password
+    settings:
+      repo: chrishopkins53/tm470-drone
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
