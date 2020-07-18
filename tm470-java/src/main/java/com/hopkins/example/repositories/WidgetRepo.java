@@ -1,10 +1,12 @@
 package com.hopkins.example.repositories;
 
+import java.util.List;
+
 import com.hopkins.example.models.Widget;
 
 public interface WidgetRepo {
 
-    boolean add(Widget widget);
+    int add(Widget widget);
 
     Widget find(int id);
 
@@ -14,4 +16,5 @@ public interface WidgetRepo {
 
     void clear();
 
+    List<Widget> all();
 }

@@ -12,13 +12,10 @@ public class WidgetRepoImpl implements WidgetRepo {
     private static List<Widget> widgetList = new ArrayList<>();
 
     @Override
-    public boolean add(Widget widget) {
-        if (widgetList.contains(widget)) {
-            return false;
-        } else {
+    public int add(Widget widget) {
+            widget.setId(widgetList.size() + 1);
             widgetList.add(widget);
-            return true;
-        }
+            return widget.getId();
     }
 
     @Override
@@ -40,6 +37,11 @@ public class WidgetRepoImpl implements WidgetRepo {
             }
         }
         return false;
+    }
+
+    @Override
+    public List<Widget> all() {
+        return widgetList;
     }
 
     @Override
