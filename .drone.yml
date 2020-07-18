@@ -7,3 +7,12 @@ steps:
     commands:
       - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
       - mvn test -B
+
+  - name: docker
+    image: plugins/docker
+    settings:
+      repo: chrishopkins53/tm470-drone
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
