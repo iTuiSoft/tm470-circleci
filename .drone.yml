@@ -17,6 +17,7 @@ steps:
       password:
         from_secret: docker_password
       dockerfile: tm470-java/Dockerfile
+      context: tm470-java/
     when:
       event:
         - push
