@@ -1,6 +1,7 @@
 require 'selenium-webdriver'
-
-driver = Selenium::WebDriver.for :chrome
+options = Selenium::WebDriver::Chrome::Options.new
+options.add_argument('--headless')
+driver = Selenium::WebDriver.for :chrome, options: options
 
 Given("I am on the Java home page") do
   driver.get Settings.base_url.java
