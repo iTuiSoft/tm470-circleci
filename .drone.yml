@@ -41,7 +41,7 @@ steps:
     commands:
       - cd ./functional-tests || exit $?
       - gem install bundler -v '2.1.4' || exit $?
-      - bundle install --quiet || exit $?
+      - bundle install || exit $?
       - cucumber
     when:
       event:
