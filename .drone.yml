@@ -64,6 +64,7 @@ services:
     environment:
       WIDGET_SERVICE_HOST: 'http://java-widgets:8080/'
       RAILS_LOG_TO_STDOUT: 'true'
+      RAILS_ENV: 'test'
     commands:
       - cd ./tm470-rails || exit $?
       - apk add --no-cache --virtual .build-deps alpine-sdk nodejs sqlite sqlite-dev sqlite-libs tzdata yarn npm || exit $?
