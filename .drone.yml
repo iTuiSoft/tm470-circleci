@@ -61,7 +61,7 @@ services:
       - bundle install --jobs 20 --retry 5 --deployment --quiet || exit $?
       - yarn install --production --non-interactive --frozen-lockfile || exit $?
       - rm -rf tmp/* log/* || exit $?
-      - rm -f tmp/pids/server.pid && bundle exec rails server -b 0.0.0.0
+      - rm -f tmp/pids/server.pid && bundle exec rails s
     when:
       event:
         - push
