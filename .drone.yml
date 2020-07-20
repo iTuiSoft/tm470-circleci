@@ -36,7 +36,7 @@ steps:
 #    depends_on:
 #      - java-widgets
 
-  - name: chromedriver
+  - name: chrome
     image: selenium/standalone-chrome:3.13.0
     detach: true
     when:
@@ -48,6 +48,8 @@ steps:
       - cd ./functional-tests || exit $?
       - gem install bundler -v '2.1.4' || exit $?
       - bundle install || exit $?
+      - curl https://chromedriver.storage.googleapis.com/2.31/chromedriver_linux64.zip -o /usr/local/bin/chromedriver || exit $?
+      - chmod +x /usr/local/bin/chromedriver
       - bundle exec cucumber
     when:
       event:
