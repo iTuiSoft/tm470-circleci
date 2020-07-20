@@ -1,6 +1,7 @@
 require 'selenium-webdriver'
 options = Selenium::WebDriver::Chrome::Options.new
 options.add_argument('--headless')
+options.add_argument('--no-sandbox')
 driver = Selenium::WebDriver.for :chrome, options: options
 
 Given("I am on the Java home page") do
