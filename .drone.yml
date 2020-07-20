@@ -2,13 +2,23 @@ kind: pipeline
 name: default
 
 steps:
-  - name: test
+  - name: java-test
     image: maven:3.6.3-jdk-8
     commands:
       - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
       - mvn test -B
 
-  - name: docker
+  - name: run-service
+    image: docker/compose:alpine-1.26.2
+    commands:
+      - docker-compose up -d
+    volumes:
+      - name: dockersock
+        path: /var/run/docker.sock
+    depends_on:
+      - java-test
+
+  - name: docker-publish
     image: plugins/docker
     settings:
       repo: chrishopkins53/tm470-drone
