@@ -67,7 +67,7 @@ services:
       - cd ./tm470-rails || exit $?
       - apk add --no-cache --virtual .build-deps alpine-sdk nodejs sqlite sqlite-dev sqlite-libs tzdata yarn npm || exit $?
       - gem install bundler -v '2.1.4' || exit $?
-      - gem install rails
+      - gem install rails -v  '5.2.4' || exit $?
       - bundle install --jobs 20 --retry 5 --quiet || exit $?
       - yarn install --production --non-interactive --frozen-lockfile || exit $?
       - rails s
