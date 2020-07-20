@@ -70,7 +70,7 @@ services:
       - gem install bundler -v '2.1.4' || exit $?
       - bundle install --jobs 20 --retry 5 --quiet || exit $?
       - yarn install --production --non-interactive --frozen-lockfile || exit $?
-      - rbundle exec -- bin/rails server -b 0.0.0.0
+      - bundle exec -- bin/rails server -b 0.0.0.0
     when:
       event:
         - push
