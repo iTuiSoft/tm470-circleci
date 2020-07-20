@@ -17,10 +17,10 @@
         <tr>
             <td>
                 <ul>
-                    <li th:text="${widget.getName()}">Name</li>
-                    <li th:text="${widget.getPurpose()}">Purpose</li>
-                    <li th:text="${widget.getSize()}">Size</li>
-                    <li th:text="${widget.getId()}">ID</li>
+                    <li name="name" th:text="${widget.getName()}">Name</li>
+                    <li name="purpose" th:text="${widget.getPurpose()}">Purpose</li>
+                    <li name="size" th:text="${widget.getSize()}">Size</li>
+                    <li name="id" th:text="${widget.getId()}">ID</li>
                     <li><a href="/">Home</a></li>
                 </ul>
             </td>
