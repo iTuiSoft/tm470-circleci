@@ -1,0 +1,10 @@
+default: &default
+  :host: <%= ENV['WIDGET_SERVICE_HOST'] || 'http://localhost:8080/' %>
+development:
+  <<: *default
+
+production:
+  <<: *default
+
+test:
+  <<: *default
