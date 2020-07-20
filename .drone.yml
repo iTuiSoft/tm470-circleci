@@ -23,7 +23,7 @@ steps:
       - cd ./tm470-rails || exit $?
       - apk add --no-cache --virtual .build-deps alpine-sdk nodejs sqlite sqlite-dev sqlite-libs tzdata yarn npm || exit $?
       - gem install bundler -v '2.1.4' || exit $?
-      - bundle install --jobs 20 --retry 5 --deployment || exit $?
+      - bundle install --jobs 20 --retry 5 --deployment --quiet || exit $?
       - yarn install --production --non-interactive --frozen-lockfile || exit $?
       - rm -rf tmp/* log/* || exit $?
       - rm -f tmp/pids/server.pid && bundle exec rails server -b 0.0.0.0
@@ -32,6 +32,16 @@ steps:
       event:
         - push
 
+  - name: functional-tests
+    image: ruby:2.6.4-alpin
+    commands:
+      - cd ./function-tests || exit $?
+      - gem install bundler || exit $?
+      - bundle install --quiet || exit $?
+      - cucumber
+    when:
+      event:
+        - push
 
   - name: docker-publish
     image: plugins/docker
