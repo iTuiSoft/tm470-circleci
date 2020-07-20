@@ -8,15 +8,14 @@ steps:
       - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
       - mvn test -B
 
-  - name: run-service
-    image: docker/compose:alpine-1.26.2
+  - name: java-widgets
+    image: openjdk:8-jdk-alpine
     commands:
-      - docker-compose up -d
-    volumes:
-      - name: dockersock
-        path: /var/run/docker.sock
-    depends_on:
-      - java-test
+      - java -jar tm470-java/target/tm470-java-0.0.1-SNAPSHOT.jar
+    detach: true
+    when:
+      event:
+        - push
 
   - name: docker-publish
     image: plugins/docker
