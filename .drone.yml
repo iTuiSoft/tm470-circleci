@@ -47,7 +47,7 @@ steps:
     commands:
       - cd ./functional-tests || exit $?
       - gem install bundler -v '2.1.4' || exit $?
-      - gem install chromedriver-helper || exit $?
+      - gem install webdrivers || exit $?
       - bundle install || exit $?
 #      - apk --no-cache add curl
 #      - curl https://chromedriver.storage.googleapis.com/84.0.4147.30/chromedriver_linux64.zip -o /usr/local/bin/chromedriver || exit $?
