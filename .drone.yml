@@ -22,9 +22,7 @@ steps:
       - bundle install --quiet || exit $?
       - sleep 30
       - ping -c 5 java-widgets
-      - telnet java-widgets 8080
       - ping -c 5 rails-widgets
-      - telnet rails-widgets 3000
       - bundle exec cucumber
     when:
       event:
@@ -51,6 +49,8 @@ steps:
 services:
   - name: java-widgets
     image: openjdk:8-jdk-alpine
+    environment:
+      LOGGING_LEVEL_ORG_SPRINGFRAMEWORK: 'DEBUG'
     commands:
       - java -jar tm470-java/target/tm470-java-0.0.1-SNAPSHOT.jar
     depends_on:
@@ -61,6 +61,8 @@ services:
 
   - name: rails-widgets
     image: ruby:2.6.4-alpine
+    environment:
+      WIDGET_SERVICE_HOST: 'http://java-widgets:8080/'
     commands:
       - cd ./tm470-rails || exit $?
       - apk add --no-cache --virtual .build-deps alpine-sdk nodejs sqlite sqlite-dev sqlite-libs tzdata yarn npm || exit $?
