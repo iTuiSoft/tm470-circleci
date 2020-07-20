@@ -60,7 +60,7 @@ services:
       - gem install bundler -v '2.1.4' || exit $?
       - bundle install --jobs 20 --retry 5 --deployment --quiet || exit $?
       - yarn install --production --non-interactive --frozen-lockfile || exit $?
-      - rails s
+      - bundle exec rails s
     when:
       event:
         - push
