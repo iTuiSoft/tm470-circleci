@@ -44,7 +44,6 @@ steps:
       - cd ./functional-tests || exit $?
       - gem install bundler -v '2.1.4' || exit $?
       - bundle install || exit $?
-      - apt-get install libxss1 libappindicator1 libindicator7 || exit $?
       - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb || exit $?
       - apt install ./google-chrome*.deb || exit $?
       - bundle exec cucumber
