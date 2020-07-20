@@ -8,31 +8,6 @@ steps:
       - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
       - mvn test -B
 
-  - name: java-widgets
-    image: openjdk:8-jdk-alpine
-    commands:
-      - java -jar tm470-java/target/tm470-java-0.0.1-SNAPSHOT.jar
-    detach: true
-    depends_on:
-      - java-test
-    when:
-      event:
-        - push
-
-  - name: rails-widgets
-    image: ruby:2.6.4-alpine
-    commands:
-      - cd ./tm470-rails || exit $?
-      - apk add --no-cache --virtual .build-deps alpine-sdk nodejs sqlite sqlite-dev sqlite-libs tzdata yarn npm || exit $?
-      - gem install bundler -v '2.1.4' || exit $?
-      - bundle install --jobs 20 --retry 5 --deployment --quiet || exit $?
-      - yarn install --production --non-interactive --frozen-lockfile || exit $?
-      - rm -rf tmp/* log/* || exit $?
-      - rm -f tmp/pids/server.pid && bundle exec rails server -b 0.0.0.0
-    when:
-      event:
-        - push
-
   - name: functional-tests
     image: nbulai/ruby-chromedriver:latest
     environment:
@@ -67,3 +42,28 @@ steps:
         - push
       branch:
         - master
+
+services:
+  - name: java-widgets
+    image: openjdk:8-jdk-alpine
+    commands:
+      - java -jar tm470-java/target/tm470-java-0.0.1-SNAPSHOT.jar
+    depends_on:
+      - java-test
+    when:
+      event:
+        - push
+
+  - name: rails-widgets
+    image: ruby:2.6.4-alpine
+    commands:
+      - cd ./tm470-rails || exit $?
+      - apk add --no-cache --virtual .build-deps alpine-sdk nodejs sqlite sqlite-dev sqlite-libs tzdata yarn npm || exit $?
+      - gem install bundler -v '2.1.4' || exit $?
+      - bundle install --jobs 20 --retry 5 --deployment --quiet || exit $?
+      - yarn install --production --non-interactive --frozen-lockfile || exit $?
+      - rm -rf tmp/* log/* || exit $?
+      - rm -f tmp/pids/server.pid && bundle exec rails server -b 0.0.0.0
+    when:
+      event:
+        - push
