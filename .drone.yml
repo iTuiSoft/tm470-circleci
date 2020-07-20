@@ -20,7 +20,7 @@ steps:
       - cd ./functional-tests || exit $?
       - gem install bundler -v '2.1.4' || exit $?
       - bundle install --quiet || exit $?
-      - sleep 30
+      - sleep 60
       - ping -c 5 java-widgets
       - ping -c 5 rails-widgets
       - bundle exec cucumber
@@ -67,9 +67,10 @@ services:
       - cd ./tm470-rails || exit $?
       - apk add --no-cache --virtual .build-deps alpine-sdk nodejs sqlite sqlite-dev sqlite-libs tzdata yarn npm || exit $?
       - gem install bundler -v '2.1.4' || exit $?
+      - gem install rails
       - bundle install --jobs 20 --retry 5 --deployment --quiet || exit $?
       - yarn install --production --non-interactive --frozen-lockfile || exit $?
-      - bundle exec rails s
+      - rails s
     when:
       event:
         - push
