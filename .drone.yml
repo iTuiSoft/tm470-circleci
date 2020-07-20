@@ -16,8 +16,8 @@ steps:
     when:
       event:
         - push
-    depends_on:
-      - java-test
+#    depends_on:
+#      - java-test
 
   - name: rails-widgets
     image: ruby:2.6.4-alpine
@@ -33,8 +33,8 @@ steps:
     when:
       event:
         - push
-    depends_on:
-      - java-widgets
+#    depends_on:
+#      - java-widgets
 
   - name: chromedriver
     image: selenium/standalone-chrome:3.13.0
@@ -51,10 +51,10 @@ steps:
     when:
       event:
         - push
-    depends_on:
-      - java-widgets
-      - rails-widgets
-      - chromedriver
+#    depends_on:
+#      - java-widgets
+#      - rails-widgets
+#      - chromedriver
 
   - name: docker-publish
     image: plugins/docker
@@ -71,5 +71,5 @@ steps:
         - push
       branch:
         - master
-    depends_on:
-      - java-test
+#    depends_on:
+#      - java-test
