@@ -43,7 +43,7 @@ steps:
       event: push
 
   - name: functional-tests
-    image: ruby:2.6.4-alpine
+    image: ruby:2.6.4
     commands:
       - cd ./functional-tests || exit $?
       - gem install bundler -v '2.1.4' || exit $?
