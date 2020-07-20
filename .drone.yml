@@ -20,7 +20,7 @@ steps:
       - cd ./functional-tests || exit $?
       - gem install bundler -v '2.1.4' || exit $?
       - bundle install --quiet || exit $?
-      - sleep 120
+      - sleep 300
       - ping -c 5 java-widgets
       - ping -c 5 rails-widgets
       - bundle exec cucumber
