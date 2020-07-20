@@ -36,6 +36,11 @@ steps:
     depends_on:
       - java-widgets
 
+  - name: chromedriver
+    image: selenium/standalone-chrome:3.13.0
+    when:
+      event: push
+
   - name: functional-tests
     image: ruby:2.6.4-alpine
     commands:
@@ -49,6 +54,7 @@ steps:
     depends_on:
       - java-widgets
       - rails-widgets
+      - chromedriver
 
   - name: docker-publish
     image: plugins/docker
