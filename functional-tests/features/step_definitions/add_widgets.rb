@@ -1,5 +1,5 @@
 require 'selenium-webdriver'
-require 'webdrivers'
+require 'webdrivers/chromedriver'
 
 options = Selenium::WebDriver::Chrome::Options.new
 options.add_argument('--headless')
