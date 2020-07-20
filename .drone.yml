@@ -13,6 +13,8 @@ steps:
     commands:
       - java -jar tm470-java/target/tm470-java-0.0.1-SNAPSHOT.jar
     detach: true
+    depends_on:
+      - java-test
     when:
       event:
         - push
@@ -43,6 +45,7 @@ steps:
       - bundle install || exit $?
       - bundle exec cucumber
     depends_on:
+      - java-widgets
       - rails-widgets
     when:
       event:
@@ -58,6 +61,8 @@ steps:
         from_secret: docker_password
       dockerfile: tm470-java/Dockerfile
       context: tm470-java/
+    depends_on:
+      - functional-tests
     when:
       event:
         - push
