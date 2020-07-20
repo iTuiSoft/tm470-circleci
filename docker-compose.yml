@@ -1,0 +1,20 @@
+version: '2.2'
+services:
+  rails-widgets:
+    container_name: rails-widgets
+    build:
+      context: tm470-rails
+    ports:
+      - 3000:3000
+    environment:
+      - WIDGET_SERVICE_HOST=http://java-widgets:8080/
+
+  java-widgets:
+    container_name: java-widgets
+    build:
+      context: tm470-java
+    ports:
+      - 8080:8080
+      - 80:80
+    environment:
+      - LOGGING_LEVEL_ORG_SPRINGFRAMEWORK=DEBUG
