@@ -1,6 +1,8 @@
 require 'selenium-webdriver'
+options = Selenium::WebDriver::Chrome::Options.new
+options.add_argument('--headless')
+driver = Selenium::WebDriver.for :chrome, options: options
 
-driver = Selenium::WebDriver.for :chrome
 current_widget = 0
 
 Given("I am on the Ruby new widget page") do
