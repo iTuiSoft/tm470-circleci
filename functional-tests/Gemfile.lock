@@ -118,7 +118,7 @@ DEPENDENCIES
   rake (~> 12.3)
   rspec
   rubocop (~> 0.71)
-  selenium-webdriver (~> 3.12)
+  selenium-webdriver (~> 3.142)
 
 BUNDLED WITH
    2.1.4

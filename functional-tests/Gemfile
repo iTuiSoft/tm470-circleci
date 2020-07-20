@@ -14,6 +14,6 @@ gem 'rspec'
 
 gem 'rubocop', '~> 0.71', require: false
 
-gem 'selenium-webdriver', '~> 3.12'
+gem 'selenium-webdriver', '~> 3.142'
 
 gem 'parallel_tests', '~> 2.29', require: false
