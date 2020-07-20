@@ -1,7 +1,8 @@
 require 'selenium-webdriver'
 options = Selenium::WebDriver::Chrome::Options.new
 options.add_argument('--headless')
-driver = Selenium::WebDriver.for :chrome, options: options
+options.add_argument
+driver = Selenium::WebDriver.for :chrome, options: options, :driver_path => 'http://selenium:4444/wd/hub'
 
 current_widget = 0
 

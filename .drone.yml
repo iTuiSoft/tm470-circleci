@@ -52,7 +52,6 @@ steps:
 #      - apk --no-cache add curl
 #      - curl https://chromedriver.storage.googleapis.com/84.0.4147.30/chromedriver_linux64.zip -o /usr/local/bin/chromedriver || exit $?
 #      - chmod +x /usr/local/bin/chromedriver
-      - webdrivers
       - bundle exec cucumber
     when:
       event:
