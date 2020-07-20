@@ -14,15 +14,17 @@ steps:
       - java-widgets
       - rails-widgets
     environment:
-      RUBY_URL: 'http://rails-widgets/'
-      JAVA_URL: 'http://java-widgets/'
+      RUBY_URL: 'http://rails-widgets:3000/'
+      JAVA_URL: 'http://java-widgets:8080/'
     commands:
       - cd ./functional-tests || exit $?
       - gem install bundler -v '2.1.4' || exit $?
       - bundle install --quiet || exit $?
-      - sleep 60
+      - sleep 30
       - ping -c 5 java-widgets
+      - telnet java-widgets 8080
       - ping -c 5 rails-widgets
+      - telnet rails-widgets 3000
       - bundle exec cucumber
     when:
       event:
