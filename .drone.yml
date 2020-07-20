@@ -17,10 +17,8 @@ steps:
       - cd ./functional-tests || exit $?
       - gem install bundler -v '2.1.4' || exit $?
       - bundle install || exit $?
+      - sleep 60
       - bundle exec cucumber
-    depends_on:
-      - java-widgets
-      - rails-widgets
     when:
       event:
         - push
