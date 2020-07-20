@@ -66,12 +66,11 @@ services:
       RAILS_LOG_TO_STDOUT: 'true'
     commands:
       - cd ./tm470-rails || exit $?
-      - apk add --no-cache --virtual .build-deps alpine-sdk nodejs sqlite sqlite-dev sqlite-libs tzdata yarn npm || exit $?
+      - apk add --no-cache --virtual .build-deps alpine-sdk nodejs tzdata yarn npm || exit $?
       - gem install bundler -v '2.1.4' || exit $?
-      - gem install rails -v  '5.2.4' || exit $?
       - bundle install --jobs 20 --retry 5 --quiet || exit $?
       - yarn install --production --non-interactive --frozen-lockfile || exit $?
-      - rails s
+      - rbundle exec -- bin/rails server -b 0.0.0.0
     when:
       event:
         - push
