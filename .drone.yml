@@ -35,7 +35,7 @@ steps:
   - name: functional-tests
     image: ruby:2.6.4-alpine
     commands:
-      - cd ./function-tests || exit $?
+      - cd ./functional-tests || exit $?
       - gem install bundler || exit $?
       - bundle install --quiet || exit $?
       - cucumber
