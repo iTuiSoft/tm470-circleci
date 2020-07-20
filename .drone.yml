@@ -10,7 +10,7 @@ steps:
 
   - name: functional-tests
     image: nbulai/ruby-chromedriver:latest
-    services:
+    depends_on:
       - java-widgets
       - rails-widgets
     environment:
@@ -20,7 +20,7 @@ steps:
       - cd ./functional-tests || exit $?
       - gem install bundler -v '2.1.4' || exit $?
       - bundle install --quiet || exit $?
-      - sleep 60
+      - sleep 120
       - ping -c 5 java-widgets
       - ping -c 5 rails-widgets
       - bundle exec cucumber
@@ -68,7 +68,7 @@ services:
       - apk add --no-cache --virtual .build-deps alpine-sdk nodejs sqlite sqlite-dev sqlite-libs tzdata yarn npm || exit $?
       - gem install bundler -v '2.1.4' || exit $?
       - gem install rails
-      - bundle install --jobs 20 --retry 5 --deployment --quiet || exit $?
+      - bundle install --jobs 20 --retry 5 --quiet || exit $?
       - yarn install --production --non-interactive --frozen-lockfile || exit $?
       - rails s
     when:
