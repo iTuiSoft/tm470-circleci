@@ -33,7 +33,7 @@ steps:
         - push
 
   - name: functional-tests
-    image: ruby:2.6.4-alpin
+    image: ruby:2.6.4-alpine
     commands:
       - cd ./function-tests || exit $?
       - gem install bundler || exit $?
