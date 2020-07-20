@@ -21,8 +21,8 @@ steps:
       - gem install bundler -v '2.1.4' || exit $?
       - bundle install --quiet || exit $?
       - sleep 60
-      - ping rails-widgets/3000
-      - ping java-widgets/8080
+      - ping rails-widgets
+      - ping java-widgets
       - bundle exec cucumber
     when:
       event:
