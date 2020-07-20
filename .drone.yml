@@ -42,6 +42,8 @@ steps:
       - gem install bundler -v '2.1.4' || exit $?
       - bundle install || exit $?
       - bundle exec cucumber
+    depends_on:
+      - rails-widgets
     when:
       event:
         - push
