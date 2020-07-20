@@ -9,6 +9,7 @@ driver = Selenium::WebDriver.for :chrome, options: options
 current_widget = 0
 
 Given("I am on the Ruby new widget page") do
+  puts Settings.base_url.ruby
   driver.get Settings.base_url.ruby + "widgets/new"
 end
 

@@ -35,8 +35,8 @@ steps:
   - name: functional-tests
     image: nbulai/ruby-chromedriver:latest
     environment:
-      RUBY_URL: http://rails-widgets/3000
-      JAVA_URL: http://java-widgets/8080
+      RUBY_URL: 'http://rails-widgets/3000'
+      JAVA_URL: 'http://java-widgets/8080'
     commands:
       - cd ./functional-tests || exit $?
       - gem install bundler -v '2.1.4' || exit $?
