@@ -39,13 +39,11 @@ steps:
       event: push
 
   - name: functional-tests
-    image: ruby:2.6.4
+    image: nbulai/ruby-chromedriver:latest
     commands:
       - cd ./functional-tests || exit $?
       - gem install bundler -v '2.1.4' || exit $?
       - bundle install || exit $?
-      - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb || exit $?
-      - apt install ./google-chrome*.deb || exit $?
       - bundle exec cucumber
     when:
       event:
