@@ -63,6 +63,7 @@ services:
     image: ruby:2.6.4-alpine
     environment:
       WIDGET_SERVICE_HOST: 'http://java-widgets:8080/'
+      RAILS_LOG_TO_STDOUT: 'true'
     commands:
       - cd ./tm470-rails || exit $?
       - apk add --no-cache --virtual .build-deps alpine-sdk nodejs sqlite sqlite-dev sqlite-libs tzdata yarn npm || exit $?
