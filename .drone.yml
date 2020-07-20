@@ -38,6 +38,7 @@ steps:
 
   - name: chromedriver
     image: selenium/standalone-chrome:3.13.0
+    detach: true
     when:
       event: push
 
