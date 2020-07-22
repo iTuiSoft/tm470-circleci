@@ -16,11 +16,12 @@ steps:
     environment:
       RUBY_URL: 'http://rails-widgets:3000/'
       JAVA_URL: 'http://java-widgets:8080/'
+      DOCKERIZE_VERSION: 'v0.3.0'
     commands:
       - cd ./functional-tests || exit $?
       - gem install bundler -v '2.1.4' || exit $?
       - bundle install --quiet || exit $?
-      - wget https://github.com/jwilder/dockerize/releases/download/v0.3.0/dockerize-linux-amd64-v0.3.0.tar.gz && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+      - wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
       - dockerize -wait http://rails-widgets:3000 -timeout 5m
       - bundle exec cucumber
     when:
