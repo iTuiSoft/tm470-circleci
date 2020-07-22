@@ -19,6 +19,7 @@ services:
     environment:
       - LOGGING_LEVEL_ORG_SPRINGFRAMEWORK=DEBUG
       - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_DATA_MONGODB_HOST=mongo-db
     depends_on:
       - mongo-db
 
