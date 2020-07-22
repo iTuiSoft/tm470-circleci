@@ -4,9 +4,11 @@ import com.hopkins.example.models.Widget;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@Profile("dev")
 public class WidgetRepoImpl implements WidgetRepo {
 
     private static List<Widget> widgetList = new ArrayList<>();
