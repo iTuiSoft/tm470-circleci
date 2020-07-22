@@ -75,3 +75,9 @@ services:
     when:
       event:
         - push
+
+  - name: widgets-database
+    image: mongo
+    when:
+      event:
+        - push
