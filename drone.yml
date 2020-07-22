@@ -1,0 +1,77 @@
+kind: pipeline
+name: default
+
+steps:
+  - name: java-test
+    image: maven:3.6.3-jdk-8
+    commands:
+      - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+      - mvn test -B
+
+  - name: functional-tests
+    image: nbulai/ruby-chromedriver:latest
+    depends_on:
+      - java-widgets
+      - rails-widgets
+    environment:
+      RUBY_URL: 'http://rails-widgets:3000/'
+      JAVA_URL: 'http://java-widgets:8080/'
+    commands:
+      - cd ./functional-tests || exit $?
+      - gem install bundler -v '2.1.4' || exit $?
+      - bundle install --quiet || exit $?
+      - sleep 300
+      - ping -c 5 java-widgets
+      - ping -c 5 rails-widgets
+      - bundle exec cucumber
+    when:
+      event:
+        - push
+
+  - name: docker-publish
+    image: plugins/docker
+    settings:
+      repo: chrishopkins53/tm470-drone
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+      dockerfile: tm470-java/Dockerfile
+      context: tm470-java/
+    depends_on:
+      - functional-tests
+    when:
+      event:
+        - push
+      branch:
+        - master
+
+services:
+  - name: java-widgets
+    image: openjdk:8-jdk-alpine
+    environment:
+      LOGGING_LEVEL_ORG_SPRINGFRAMEWORK: 'DEBUG'
+    commands:
+      - java -jar tm470-java/target/tm470-java-0.0.1-SNAPSHOT.jar
+    depends_on:
+      - java-test
+    when:
+      event:
+        - push
+
+  - name: rails-widgets
+    image: ruby:2.6.4-alpine
+    environment:
+      WIDGET_SERVICE_HOST: 'http://java-widgets:8080/'
+      RAILS_LOG_TO_STDOUT: 'true'
+      RAILS_ENV: 'test'
+    commands:
+      - cd ./tm470-rails || exit $?
+      - apk add --no-cache --virtual .build-deps alpine-sdk nodejs sqlite sqlite-dev sqlite-libs tzdata yarn npm || exit $?
+      - gem install bundler -v '2.1.4' || exit $?
+      - bundle install --jobs 20 --retry 5 --quiet || exit $?
+      - yarn install --production --non-interactive --frozen-lockfile || exit $?
+      - bundle exec -- bin/rails server -b 0.0.0.0
+    when:
+      event:
+        - push
