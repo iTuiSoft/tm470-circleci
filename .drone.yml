@@ -51,10 +51,13 @@ services:
     image: openjdk:8-jdk-alpine
     environment:
       LOGGING_LEVEL_ORG_SPRINGFRAMEWORK: 'DEBUG'
+      SPRING_PROFILES_ACTIVE: 'prod'
+      SPRING_DATA_MONGODB_HOST: 'widgets-database'
     commands:
       - java -jar tm470-java/target/tm470-java-0.0.1-SNAPSHOT.jar
     depends_on:
       - java-test
+      - widgets-database
     when:
       event:
         - push
