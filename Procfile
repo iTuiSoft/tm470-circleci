@@ -1,1 +1,1 @@
-web: java -jar target/tm470-java-0.0.1-SNAPSHOT.jar
+web: java -jar tm470-java/target/tm470-java-0.0.1-SNAPSHOT.jar
