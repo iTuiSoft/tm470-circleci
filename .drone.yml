@@ -62,7 +62,7 @@ steps:
   - name: heroku-deploy
     image: alpine/git
     commands:
-      - git config credential.helper "/bin/sh .secrets'
+      - git config credential.helper "/bin/sh .secrets"
       - git remote add heroku https://git.heroku.com/tm470-drone.git
       - git push heroku
     secrets:
