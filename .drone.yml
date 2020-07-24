@@ -62,12 +62,9 @@ steps:
   - name: heroku-deploy
     image: alpine/git
     commands:
-      - git config credential.helper "/bin/sh .secrets"
+      - git config credential.helper password=$HEROKU_API_KEY
       - git remote add heroku https://git.heroku.com/tm470-drone.git
       - git push heroku
-    secrets:
-      - HEROKU_API_KEY
-
 
 services:
   - name: java-widgets
