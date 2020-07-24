@@ -17,6 +17,9 @@ steps:
         from_secret: sonar_token
     depends_on:
       - java-test
+    when:
+      event:
+        - push
 
   - name: functional-tests
     image: nbulai/ruby-chromedriver:latest
