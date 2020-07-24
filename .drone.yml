@@ -59,6 +59,27 @@ steps:
       branch:
         - master
 
+  - name: heroku-deploy
+    image: alpine/git
+    commands:
+      - git remote add heroku https://git.heroku.com/tm470-drone.get
+      - git push heroku
+
+#pipeline:
+#  heroku:
+#    image: alpine/git
+#    env:
+#      - HEROKU_APP=whatever
+#    commands:
+#      - git config credential.helper "/bin/sh .secrets"
+#      - git remote add heroku https://git.heroku.com/$HEROKU_APP.git
+#      - git push heroku
+#    secrets:
+#      - HEROKU_PASSWORD
+#    when:
+#      branch: master
+
+
 services:
   - name: java-widgets
     image: openjdk:8-jdk-alpine
