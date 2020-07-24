@@ -62,7 +62,7 @@ steps:
   - name: heroku-deploy
     image: alpine/git
     commands:
-      - git remote add heroku https://git.heroku.com/tm470-drone.get
+      - git remote add heroku https://git.heroku.com/tm470-drone.git
       - git push heroku
 
 #pipeline:
