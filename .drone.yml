@@ -69,6 +69,11 @@ steps:
       - git push https://user:$PASSWORD@git.heroku.com/tm470-drone.git
     secrets:
       HEROKU_API_KEY
+    when:
+      event:
+        - push
+      branch:
+        - master
 
 services:
   - name: java-widgets
