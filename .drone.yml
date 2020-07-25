@@ -62,10 +62,8 @@ steps:
   - name: heroku-deploy
     image: alpine/git
     commands:
-      - git config user.password "$HEROKU_API_KEY"
-      - git config user.name "aaa"
       - git remote add heroku https://git.heroku.com/tm470-drone.git
-      - git push heroku
+      - git push https://user:$HEROKU_API_KEY@git.heroku.com/tm470-drone.git --all
 
 services:
   - name: java-widgets
