@@ -63,7 +63,9 @@ steps:
     image: alpine/git
     commands:
       - git remote add heroku https://git.heroku.com/tm470-drone.git
-      - git push https://user:{$HEROKU_API_KEY}@git.heroku.com/tm470-drone.git --all
+      - git push https://user:$HEROKU_API_KEY@git.heroku.com/tm470-drone.git --all
+    secrets:
+      HEROKU_API_KEY
 
 services:
   - name: java-widgets
