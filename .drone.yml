@@ -66,7 +66,7 @@ steps:
         from_secret: HEROKU_API_KEY
     commands:
       - git remote add heroku https://git.heroku.com/tm470-drone.git
-      - git push https://user:$PASSWORD@git.heroku.com/tm470-drone.git heroku/master
+      - git push https://user:$PASSWORD@git.heroku.com/tm470-drone.git
     secrets:
       HEROKU_API_KEY
 
