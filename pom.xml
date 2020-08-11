@@ -12,5 +12,10 @@
     <modules>
         <module>tm470-java</module>
     </modules>
+    <properties>
+        <sonar.projectKey>ituisoft:tm470-drone</sonar.projectKey>
+        <sonar.organization>ituisoft</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+    </properties>
 
 </project>
