@@ -1,32 +1,35 @@
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="utf-8">
-    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
-    <meta content="width=device-width, initial-scale=1" name="viewport"/>
-    <meta content="" name="description">
-    <meta content="" name="author">
-    <link href="../../favicon.ico" rel="icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Widgets R Us</title>
-    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <link rel="stylesheet" href="../static/assets/bootstrap/css/bootstrap.min.css" th:href="@{/assets/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="../static/assets/fonts/font-awesome.min.css" th:href="@{/assets/fonts/font-awesome.min.css}">
+    <link rel="stylesheet" href="../static/assets/css/Navigation-with-Search.css" th:href="@{/assets/bootstrap/css/Navigation-with-Search.css}">
+    <link rel="stylesheet" href="../static/assets/css/styles.css" th:href="@{/assets/bootstrap/css/styles.css}">
 </head>
-<body>
-<h1 class="jumbotron">Welcome to Widgets R Us</h1>
 
-<div class="col-md-6 col-md-offset-3">
-    <table>
-        <tr>
-            <td>
-                <a href="/widget/add">Add new widget</a>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input id="widgetId" type="text"/>
-                <a name="search_link" href="javascript:;"
-                   onclick="this.href='/widget/' + document.getElementById('widgetId').value">Search</a>
-            </td>
-        </tr>
-    </table>
-</div>
+<body style="background-color: rgb(246,238,186);"><img class="img-fluid d-block d-xl-flex" src="../static/assets/img/coollogo_com-117611065.png" th:src="@{/assets/img/coollogo_com-117611065.png}">
+    <nav class="navbar navbar-light navbar-expand-md d-block navigation-clean-search" style="background-color: rgb(246,238,186);">
+        <div class="container"><a class="navbar-brand" href="#">Welcome to Widgets R Us</a>
+            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                <span class="sr-only">Toggle navigation</span>
+                span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse"
+                id="navcol-1"><a class="mr-auto" href="/widget/add" style="color: rgb(86,198,198);">Add a widget</a>
+                <form class="form-inline ml-auto" target="_self">
+                    <div class="form-group float-right d-xl-flex justify-content-xl-end">
+                        <label for="widgetId"><i class="fa fa-search"></i></label>
+                        <input class="form-control d-xl-flex search-field" type="search" id="widgetId" placeholder="Enter widget ID">
+                        <a class="btn btn-light action-button" role="button" formmethod="post" href="javascript:;" name="search_link" onclick="this.href='/widget/' + document.getElementById('widgetId').value">Search</a></div>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <script src="../static/assets/js/jquery.min.js"></script>
+    <script src="../static/assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
+
 </html>
